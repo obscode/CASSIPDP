@@ -7,13 +7,15 @@ http://staff.washington.edu/yoachim/code.php
 
 import numpy as np
 from astropy.table import Table
+import os
+BASEPATH = os.path.dirname(os.path.abspath(__file__))+"/"
 
 def load_longperiod_datatable():
     """ Model for long-period cepheids (P > 10 days). """
-    return Table.read("BVI_templates/long_struc.fits")    
+    return Table.read(BASEPATH+"BVI_templates/long_struc.fits")    
 def load_shortperiod_datatable():
     """ Model for short-period cepheids (P < 10 days). """
-    return Table.read("BVI_templates/short_struc.fits")    
+    return Table.read(BASEPATH+"BVI_templates/short_struc.fits")    
 longperiod_datatable = load_longperiod_datatable()
 shortperiod_datatable = load_shortperiod_datatable()
 
