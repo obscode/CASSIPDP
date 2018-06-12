@@ -153,3 +153,15 @@ def gen_lc(x,p0,struct,pmax=85.):
     p = list(p[0:7]) + list(albes)
     return trip_ceph(x,p)
 
+
+def load_ogle_master_table():
+    return ascii.read("ogle_F_stars.txt",delimiter='\t',guess=False)
+def load_ogle_photometry(starname,band,datadir="./ogle_photometry"):
+    assert band in ["V","I"], band
+    outpath = os.path.join(datadir, band, starname.upper()+".dat")
+    return ascii.read(outpath,names=["t",band,band+"err"])
+def load_ogle_star(starname, ogle=None):
+    if ogle is None: ogle = load_ogle_master_table()
+    ix = np.where(ogle["ID"] == starname)[0]
+    assert len(ix) == 1
+    return ogle[ix]
