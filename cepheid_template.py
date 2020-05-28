@@ -24,7 +24,7 @@ def cepheid_lightcurve(tarr, m0, period, phaseshift):
     Generate a Cepheid light curve.
     I-band, assumes shape and normalization based on period.
     tarr: times at which you want the light curve evaluated
-    m0: mean magnitude for the light curve
+    m0: mean apparent magnitude for the light curve
     period: same units as tarr
     phaseshift: same units as tarr
     """
